@@ -1,0 +1,13 @@
+{{>header}}
+
+<main class="container">
+    <div id="login" class="login">
+        <h2>Inicia Sesión</h2>
+        {{>input name="username" type="text" placeholder="Usuario" value=""}}
+        {{>input name="password" type="password" placeholder="Contraseña" value=""}}
+
+        <button id="getToken">Ingresar</button>
+    </div>
+    <img class="sign-img" src="{{host}}/images/login.svg" alt="Security with your login">
+</main>
+
