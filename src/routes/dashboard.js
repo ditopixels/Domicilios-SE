@@ -4,6 +4,6 @@ import { isAuthenticated } from '../helpers/auth.js'
 
 const router = Router()
 
-router.get('/dashboard', isAuthenticated, ctrl.renderDashboard)
+router.get('/dashboard', ctrl.renderDashboard)
 
 export default router

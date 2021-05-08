@@ -7,8 +7,9 @@ export const renderLogin = (req, res) => {
     })
 }
 
-export const validateAdmin = (req, res) => {
+export const validateAdmin = async(req, res) => {
     const { username, password } = req.body
+    console.log(username, password)
     Admin.findOne({ username }, async(err, admin) => {
         if (err) return res.json({
             ok: false,
@@ -31,6 +32,7 @@ export const validateAdmin = (req, res) => {
         const token = jwt.sign({ id: admin._id }, "b49e7ede-af71-11eb-8529-0242ac130003", { expiresIn: 60 * 60 * 24 })
         res.json({
             ok: true,
+            username: "whatsapp",
             token
         })
 
