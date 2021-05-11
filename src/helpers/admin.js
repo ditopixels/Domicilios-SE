@@ -7,7 +7,7 @@ const credentials = {
 }
 
 
-createAdmin()
+//createAdmin()
 
 async function createAdmin() {
     try {

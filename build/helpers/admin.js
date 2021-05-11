@@ -13,8 +13,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 var credentials = {
   username: 'Juan Diego',
   password: 'test123'
-};
-createAdmin();
+}; //createAdmin()
 
 function createAdmin() {
   return _createAdmin.apply(this, arguments);
