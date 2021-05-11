@@ -8,12 +8,20 @@ const adminSchema = new Schema({
 })
 
 adminSchema.methods.encryptPassword = async(pass) => {
-    const salt = await bcrypt.genSalt(10)
-    const hash = await bcrypt.hash(pass, salt)
-    return hash
+    try {
+        const salt = await bcrypt.genSalt(10)
+        const hash = await bcrypt.hash(pass, salt)
+        return hash
+    } catch (e) {
+        console.log(e)
+    }
 }
 adminSchema.methods.matchPassword = async function(pass) {
-    return await bcrypt.compare(pass, this.password)
+    try {
+        return await bcrypt.compare(pass, this.password)
+    } catch (e) {
+        console.log(e)
+    }
 }
 
 export default model('Admin', adminSchema)

@@ -19,16 +19,17 @@ _passport["default"].use(new _passportLocal.Strategy( /*#__PURE__*/function () {
       while (1) {
         switch (_context.prev = _context.next) {
           case 0:
-            _context.next = 2;
+            _context.prev = 0;
+            _context.next = 3;
             return _Admin["default"].findOne({
               username: username
             });
 
-          case 2:
+          case 3:
             user = _context.sent;
 
             if (user) {
-              _context.next = 7;
+              _context.next = 8;
               break;
             }
 
@@ -36,31 +37,40 @@ _passport["default"].use(new _passportLocal.Strategy( /*#__PURE__*/function () {
               message: "Not User found."
             }));
 
-          case 7:
-            _context.next = 9;
+          case 8:
+            _context.next = 10;
             return user.matchPassword(password);
 
-          case 9:
+          case 10:
             match = _context.sent;
 
             if (!match) {
-              _context.next = 14;
+              _context.next = 15;
               break;
             }
 
             return _context.abrupt("return", done(null, user));
 
-          case 14:
+          case 15:
             return _context.abrupt("return", done(null, false, {
               message: "Incorrect Password."
             }));
 
-          case 15:
+          case 16:
+            _context.next = 21;
+            break;
+
+          case 18:
+            _context.prev = 18;
+            _context.t0 = _context["catch"](0);
+            console.log(_context.t0);
+
+          case 21:
           case "end":
             return _context.stop();
         }
       }
-    }, _callee);
+    }, _callee, null, [[0, 18]]);
   }));
 
   return function (_x, _x2, _x3) {

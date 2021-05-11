@@ -33,10 +33,11 @@ var createPedido = /*#__PURE__*/function () {
       while (1) {
         switch (_context.prev = _context.next) {
           case 0:
+            _context.prev = 0;
             _req$body = req.body, name = _req$body.name, email = _req$body.email, phone = _req$body.phone, edad = _req$body.edad, entry = _req$body.entry, output = _req$body.output, cantidad = _req$body.cantidad, image = _req$body.image, producto = _req$body.producto;
 
             if (!req.params.pedido) {
-              _context.next = 6;
+              _context.next = 7;
               break;
             }
 
@@ -52,13 +53,13 @@ var createPedido = /*#__PURE__*/function () {
               image: image,
               producto: producto
             });
-            _context.next = 5;
+            _context.next = 6;
             return _newPedido.save();
 
-          case 5:
+          case 6:
             return _context.abrupt("return", res.redirect('/#modal'));
 
-          case 6:
+          case 7:
             newPedido = new _Pedidos["default"]({
               producto: producto,
               name: name,
@@ -70,18 +71,25 @@ var createPedido = /*#__PURE__*/function () {
               status: false,
               type: 'pedido'
             });
-            _context.next = 9;
+            _context.next = 10;
             return newPedido.save();
 
-          case 9:
-            res.redirect('/#modal');
-
           case 10:
+            res.redirect('/#modal');
+            _context.next = 16;
+            break;
+
+          case 13:
+            _context.prev = 13;
+            _context.t0 = _context["catch"](0);
+            console.log(_context.t0);
+
+          case 16:
           case "end":
             return _context.stop();
         }
       }
-    }, _callee);
+    }, _callee, null, [[0, 13]]);
   }));
 
   return function createPedido(_x, _x2) {
@@ -154,13 +162,14 @@ var renderPedidos = /*#__PURE__*/function () {
       while (1) {
         switch (_context3.prev = _context3.next) {
           case 0:
+            _context3.prev = 0;
             data = {};
-            _context3.next = 3;
+            _context3.next = 4;
             return _Pedidos["default"].find().sort({
               date: -1
             });
 
-          case 3:
+          case 4:
             pedidosDB = _context3.sent;
             pedidos = [];
             data.title = 'Pedidos';
@@ -191,13 +200,20 @@ var renderPedidos = /*#__PURE__*/function () {
             console.log(pedidosDB);
             data.pedidos = pedidos;
             res.render("pedidos", data);
+            _context3.next = 16;
+            break;
 
-          case 10:
+          case 13:
+            _context3.prev = 13;
+            _context3.t0 = _context3["catch"](0);
+            console.log(_context3.t0);
+
+          case 16:
           case "end":
             return _context3.stop();
         }
       }
-    }, _callee3);
+    }, _callee3, null, [[0, 13]]);
   }));
 
   return function renderPedidos(_x5, _x6) {
@@ -386,16 +402,18 @@ var renderProduct = /*#__PURE__*/function () {
       while (1) {
         switch (_context7.prev = _context7.next) {
           case 0:
+            _context7.prev = 0;
+
             if (!req.params.product) {
-              _context7.next = 7;
+              _context7.next = 8;
               break;
             }
 
             data = {};
-            _context7.next = 4;
+            _context7.next = 5;
             return _Products["default"].findById(req.params.product);
 
-          case 4:
+          case 5:
             producto = _context7.sent;
             data.product = {
               title: producto.title,
@@ -407,15 +425,22 @@ var renderProduct = /*#__PURE__*/function () {
             };
             return _context7.abrupt("return", res.render('addProduct', data));
 
-          case 7:
-            res.render('addProduct');
-
           case 8:
+            res.render('addProduct');
+            _context7.next = 14;
+            break;
+
+          case 11:
+            _context7.prev = 11;
+            _context7.t0 = _context7["catch"](0);
+            console.log(_context7.t0);
+
+          case 14:
           case "end":
             return _context7.stop();
         }
       }
-    }, _callee7);
+    }, _callee7, null, [[0, 11]]);
   }));
 
   return function renderProduct(_x13, _x14) {
@@ -432,21 +457,29 @@ var deleteProduct = /*#__PURE__*/function () {
       while (1) {
         switch (_context8.prev = _context8.next) {
           case 0:
-            _context8.next = 2;
+            _context8.prev = 0;
+            _context8.next = 3;
             return _Products["default"].findByIdAndDelete(req.params.product);
 
-          case 2:
+          case 3:
             product = _context8.sent;
             res.json({
               ok: true
             });
+            _context8.next = 10;
+            break;
 
-          case 4:
+          case 7:
+            _context8.prev = 7;
+            _context8.t0 = _context8["catch"](0);
+            console.log(_context8.t0);
+
+          case 10:
           case "end":
             return _context8.stop();
         }
       }
-    }, _callee8);
+    }, _callee8, null, [[0, 7]]);
   }));
 
   return function deleteProduct(_x15, _x16) {
@@ -463,27 +496,28 @@ var renderCategorie = /*#__PURE__*/function () {
       while (1) {
         switch (_context9.prev = _context9.next) {
           case 0:
+            _context9.prev = 0;
             data = {
               products: []
             };
             data.categorie = req.params.categorie;
-            _context9.next = 4;
+            _context9.next = 5;
             return _Products["default"].find({
               categorie: data.categorie
             });
 
-          case 4:
+          case 5:
             productsDB = _context9.sent;
             console.log(productsDB);
 
             if (!(!productsDB > 0)) {
-              _context9.next = 8;
+              _context9.next = 9;
               break;
             }
 
             return _context9.abrupt("return", res.render('404'));
 
-          case 8:
+          case 9:
             productsDB.forEach(function (product) {
               return data.products.push({
                 _id: product._id,
@@ -494,13 +528,20 @@ var renderCategorie = /*#__PURE__*/function () {
               });
             });
             res.render('categorie', data);
+            _context9.next = 16;
+            break;
 
-          case 10:
+          case 13:
+            _context9.prev = 13;
+            _context9.t0 = _context9["catch"](0);
+            console.log(_context9.t0);
+
+          case 16:
           case "end":
             return _context9.stop();
         }
       }
-    }, _callee9);
+    }, _callee9, null, [[0, 13]]);
   }));
 
   return function renderCategorie(_x17, _x18) {

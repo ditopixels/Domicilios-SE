@@ -20,16 +20,17 @@ var renderHome = /*#__PURE__*/function () {
       while (1) {
         switch (_context.prev = _context.next) {
           case 0:
+            _context.prev = 0;
             productCategories = [];
             data = {
               categories: []
             };
-            _context.next = 4;
+            _context.next = 5;
             return _Products["default"].find().sort({
               date: -1
             });
 
-          case 4:
+          case 5:
             products = _context.sent;
             products.forEach(function (product) {
               var title = product.title,
@@ -64,13 +65,20 @@ var renderHome = /*#__PURE__*/function () {
             data.msg = 'Pedido realizado, pronto nos estaremos comunicando contigo';
             console.log(data);
             res.render('home', data);
+            _context.next = 15;
+            break;
 
-          case 9:
+          case 12:
+            _context.prev = 12;
+            _context.t0 = _context["catch"](0);
+            console.log('error: ', _context.t0);
+
+          case 15:
           case "end":
             return _context.stop();
         }
       }
-    }, _callee);
+    }, _callee, null, [[0, 12]]);
   }));
 
   return function renderHome(_x, _x2) {

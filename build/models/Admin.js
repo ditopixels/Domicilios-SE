@@ -35,24 +35,30 @@ adminSchema.methods.encryptPassword = /*#__PURE__*/function () {
       while (1) {
         switch (_context.prev = _context.next) {
           case 0:
-            _context.next = 2;
+            _context.prev = 0;
+            _context.next = 3;
             return _bcryptjs["default"].genSalt(10);
 
-          case 2:
+          case 3:
             salt = _context.sent;
-            _context.next = 5;
+            _context.next = 6;
             return _bcryptjs["default"].hash(pass, salt);
 
-          case 5:
+          case 6:
             hash = _context.sent;
             return _context.abrupt("return", hash);
 
-          case 7:
+          case 10:
+            _context.prev = 10;
+            _context.t0 = _context["catch"](0);
+            console.log(_context.t0);
+
+          case 13:
           case "end":
             return _context.stop();
         }
       }
-    }, _callee);
+    }, _callee, null, [[0, 10]]);
   }));
 
   return function (_x) {
@@ -66,18 +72,24 @@ adminSchema.methods.matchPassword = /*#__PURE__*/function () {
       while (1) {
         switch (_context2.prev = _context2.next) {
           case 0:
-            _context2.next = 2;
+            _context2.prev = 0;
+            _context2.next = 3;
             return _bcryptjs["default"].compare(pass, this.password);
 
-          case 2:
+          case 3:
             return _context2.abrupt("return", _context2.sent);
 
-          case 3:
+          case 6:
+            _context2.prev = 6;
+            _context2.t0 = _context2["catch"](0);
+            console.log(_context2.t0);
+
+          case 9:
           case "end":
             return _context2.stop();
         }
       }
-    }, _callee2, this);
+    }, _callee2, this, [[0, 6]]);
   }));
 
   return function (_x2) {

@@ -10,28 +10,32 @@ cloudinary.config({
 })
 
 export const createPedido = async(req, res) => {
-    const { name, email, phone, edad, entry, output, cantidad, image, producto } = req.body
-    if (req.params.pedido) {
-        const newPedido = new Pedidos({
-            name,
-            email,
-            phone,
-            edad,
-            cantidad,
-            output,
-            type: 'product',
-            status: false,
-            image,
-            producto
-        })
+    try {
+        const { name, email, phone, edad, entry, output, cantidad, image, producto } = req.body
+        if (req.params.pedido) {
+            const newPedido = new Pedidos({
+                name,
+                email,
+                phone,
+                edad,
+                cantidad,
+                output,
+                type: 'product',
+                status: false,
+                image,
+                producto
+            })
+            await newPedido.save()
+            return res.redirect('/#modal')
+        }
+        const newPedido = new Pedidos({ producto, name, email, phone, edad, entry, output, status: false, type: 'pedido' })
+
         await newPedido.save()
-        return res.redirect('/#modal')
+
+        res.redirect('/#modal')
+    } catch (e) {
+        console.log(e)
     }
-    const newPedido = new Pedidos({ producto, name, email, phone, edad, entry, output, status: false, type: 'pedido' })
-
-    await newPedido.save()
-
-    res.redirect('/#modal')
 }
 export const createProduct = async(req, res) => {
 
@@ -50,18 +54,22 @@ export const createProduct = async(req, res) => {
 }
 
 export const renderPedidos = async(req, res) => {
-    const data = {}
-    const pedidosDB = await Pedidos.find().sort({ date: -1 })
-    const pedidos = []
+    try {
+        const data = {}
+        const pedidosDB = await Pedidos.find().sort({ date: -1 })
+        const pedidos = []
 
-    data.title = 'Pedidos'
-    pedidosDB.forEach(pedido => {
-        const { _id, name, date, phone, email, entry, output, status, producto, image } = pedido
-        pedidos.push({ _id, name, date, phone, email, entry, output, status, producto, image })
-    })
-    console.log(pedidosDB)
-    data.pedidos = pedidos
-    res.render("pedidos", data)
+        data.title = 'Pedidos'
+        pedidosDB.forEach(pedido => {
+            const { _id, name, date, phone, email, entry, output, status, producto, image } = pedido
+            pedidos.push({ _id, name, date, phone, email, entry, output, status, producto, image })
+        })
+        console.log(pedidosDB)
+        data.pedidos = pedidos
+        res.render("pedidos", data)
+    } catch (e) {
+        console.log(e)
+    }
 }
 
 export const renderPedido = async(req, res) => {
@@ -150,45 +158,56 @@ export const updateProduct = async(req, res) => {
 }
 
 export const renderProduct = async(req, res) => {
-    if (req.params.product) {
-        const data = {}
-        const producto = await Products.findById(req.params.product)
+    try {
+        if (req.params.product) {
+            const data = {}
+            const producto = await Products.findById(req.params.product)
 
-        data.product = {
-            title: producto.title,
-            description: producto.description,
-            categorie: producto.categorie,
-            price: producto.price,
-            image: producto.image,
-            id: producto._id
+            data.product = {
+                title: producto.title,
+                description: producto.description,
+                categorie: producto.categorie,
+                price: producto.price,
+                image: producto.image,
+                id: producto._id
+            }
+            return res.render('addProduct', data)
         }
-        return res.render('addProduct', data)
+        res.render('addProduct')
+    } catch (e) {
+        console.log(e)
     }
-    res.render('addProduct')
 }
 
 export const deleteProduct = async(req, res) => {
-    const product = await Products.findByIdAndDelete(req.params.product)
-    res.json({ ok: true })
+    try {
+        const product = await Products.findByIdAndDelete(req.params.product)
+        res.json({ ok: true })
+    } catch (e) {
+        console.log(e)
+    }
 }
 
 export const renderCategorie = async(req, res) => {
+    try {
+        const data = { products: [] }
+        data.categorie = req.params.categorie
 
-    const data = { products: [] }
-    data.categorie = req.params.categorie
-
-    const productsDB = await Products.find({ categorie: data.categorie })
-    console.log(productsDB)
-    if (!productsDB > 0) {
-        return res.render('404')
+        const productsDB = await Products.find({ categorie: data.categorie })
+        console.log(productsDB)
+        if (!productsDB > 0) {
+            return res.render('404')
+        }
+        productsDB.forEach(product => data.products.push({
+            _id: product._id,
+            title: product.title,
+            description: product.description,
+            price: product.price,
+            image: product.image
+        }))
+        res.render('categorie', data)
+    } catch (e) {
+        console.log(e)
     }
-    productsDB.forEach(product => data.products.push({
-        _id: product._id,
-        title: product.title,
-        description: product.description,
-        price: product.price,
-        image: product.image
-    }))
-    res.render('categorie', data)
 
 }

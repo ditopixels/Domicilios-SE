@@ -22,22 +22,23 @@ var renderDashboard = /*#__PURE__*/function () {
       while (1) {
         switch (_context.prev = _context.next) {
           case 0:
+            _context.prev = 0;
             data = {};
-            _context.next = 3;
+            _context.next = 4;
             return _Pedidos["default"].find({
               status: false
             }).limit(5).sort({
               date: -1
             });
 
-          case 3:
+          case 4:
             pedidosDB = _context.sent;
-            _context.next = 6;
+            _context.next = 7;
             return _Products["default"].find().sort({
               date: -1
             });
 
-          case 6:
+          case 7:
             productsDB = _context.sent;
             pedidos = [];
             products = [];
@@ -65,13 +66,20 @@ var renderDashboard = /*#__PURE__*/function () {
             });
             data.products = products;
             res.render('dashboard', data);
+            _context.next = 23;
+            break;
 
-          case 17:
+          case 20:
+            _context.prev = 20;
+            _context.t0 = _context["catch"](0);
+            console.log(_context.t0);
+
+          case 23:
           case "end":
             return _context.stop();
         }
       }
-    }, _callee);
+    }, _callee, null, [[0, 20]]);
   }));
 
   return function renderDashboard(_x, _x2) {
