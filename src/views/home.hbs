@@ -1,1 +1,55 @@
 {{>header}}
+<section class="pedidos-section">
+    <form action="{{host}}/pedidos" method="POST" class="form-pedido">
+        <h2>Realiza tu pedido</h2>
+        {{>input type="text" name="name" placeholder="Nombre"}}
+        {{>input type="text" name="title" placeholder="Producto/s"}}
+        {{>input type="text" name="email" placeholder="Correo electrónico"}}
+        {{>input type="text" name="phone" placeholder="Teléfono"}}
+        {{>input type="number" name="edad" placeholder="Edad"}}
+        {{>input type="text" name="entry" placeholder="Direccion donde se recoge"}}
+        {{>input type="text" name="output" placeholder="Direccion de entrega"}}
+
+        <button class="button">Realizar pedido</button>
+    </form>
+
+    <img src="{{host}}/images/package.svg" alt="Recibe tus paquetes a tiempo">
+
+</section>
+
+<section class="products bg-white">
+    <h2>Productos</h2>
+    {{#each categories}}
+        <div class="categorie">
+            <div class="categorie-header">
+                <h2>{{this.name}}</h2>
+                <a href="{{host}}/productos/{{this.name}}">Ver todos</a>
+            </div>
+            <div class="categorie-products">
+                {{#each this.products}}
+                    <a href="{{host}}/pedidos/{{this._id}}" class="card">
+                        <div class="card-img">
+                            <img src={{this.image}} class="img-t1">
+                        </div>
+                        <div class="card-description">
+                            <h3 class="card-title">{{this.title}}</h3>
+                            <p>{{this.description}}</p>
+                            <div class="product-price">${{this.price}}</div> 
+                        </div>
+                    </a>
+                {{/each}}
+            </div>
+        </div>
+    {{/each}}
+</section>
+ <div class="hero hero-home" style="background-position:center top;background-image: url({{host}}/images/heroQuien.jpg);">
+    <div class="hero-content">
+        <h2>¿Como funciona  <span style="color: gold">Domi</span><span style="color: orange">Fast</span> ? </h2>
+        <p class="hero-text">
+            DomiFast es una pagina web de domicilios, pero esta a diferencia de las demas, te permite publicar tus comidas, productos de salud, productos de limpieza, productos del campesino, tus servicios de trabajo etc.
+            Te permite navegar y buscar los productos que tu quieras para que lleguen a la puerta de tu casa.
+            <a class="button-ghost" href="{{host}}/empleo">Aplicar al empleo</a>
+        </p>
+    </div>
+</div>
+

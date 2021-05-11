@@ -3,8 +3,8 @@ import bcrypt from 'bcryptjs'
 import 'babel-polyfill'
 
 const adminSchema = new Schema({
-    username: { type: String },
-    password: { type: String }
+    username: { type: String, required: true },
+    password: { type: String, required: true }
 })
 
 adminSchema.methods.encryptPassword = async(pass) => {

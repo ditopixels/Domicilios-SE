@@ -1,0 +1,19 @@
+{{>header}}
+
+<section class="products-section">
+    <h2>Productos - {{categorie}}</h2>
+    <div class="products-content">
+        {{#each products}}
+            <a href="{{host}}/producto/{{this._id}}" class="card">
+                <div class="card-img">
+                    <img src="{{#if image}}{{image}}{{else}}{{host}}/images/user.jpg{{/if}}" class="img-t1">
+                </div>
+                <div class="card-description">
+                    <h3 class="card-title">{{this.title}}</h3>
+                    <p>{{this.description}}</p>
+                    <div class="product-price">${{this.price}}</div> 
+                </div>
+            </a>
+        {{/each}}
+    </div>
+</section>

@@ -1,12 +1,71 @@
-{{>header}}
-<main class="container">
-    <h2>¡Bienvenido {{name}}!</h2> 
-    <div class="productos">
-        {{#each product}}
-            <div >
+<header>
+    <a class="logo" href="{{host}}/">
+        <span>Domi<span class="gray">Fast</span></span>
+    </a>
+    <nav>
+        <ul>
+            <li><a href="{{host}}/pedidos">Pedidos</a></li>
+            <li><a href="{{host}}/productos">Productos</a></li>
+            <li><a href="{{host}}/empleo">Empleo</a></li>
+            <li><a class="red" href="{{host}}/logout">Cerrar sesion</a></li>
+        </ul>
+    </nav>
+</header>
 
-            </div>
-        {{/each}}
+<main class="content">
+    <div class="hero">
+        <div class="hero-content">
+            <h2>¡Bienvenido {{name}}!</h2>
+            <p class="hero-text">
+                Nos alegra tenerte por aca, tenemos trabajo por hacer
+            </p>
+        </div>
+    </div>
+    <div class="pedidos">
+        <div class="pedidos-header">
+            <h3>Pedidos</h3>
+        </div>
+        <div class="pedidos-content">
+            {{#if pedidos}}
+                {{#each pedidos}}
+                    
+                        
+                        <img class="pedido-img" src={{#if this.image}} {{this.image}} {{else}} "{{host}}images/user.jpg" {{/if}} alt="usuario">
+                        <span>{{this.name}}</span>
+                        <span>{{timeago this.date}}</span>
+                        <span class="line-blue">{{this.phone}}</span>
+                        <!--
+                        <a class="link-gray" href="{{host}}/pedidos/{{this._id}}">Ver pedido</a>-->
+                    
+                {{/each}}
+            {{else}}
+                <p>No tiene pedidos</p>
+            {{/if}}
+        </div>
+        <div class="pedidos-footer">
+            <a href="{{host}}/pedidos" class="button-ghost">Ver todos los pedidos</a>
+        </div>
     </div>
 
+    <section class="products-section">
+        <h2>Productos</h2>
+        <div class="products-content">
+            <a class="product-add" href="{{host}}/producto/add">
+                <i class="fas fa-plus"></i>
+            </a>
+            {{#each products}}
+                <a href="{{host}}/producto/{{this._id}}" class="card">
+                    <div class="card-img">
+                        <img src="{{#if image}}{{image}}{{else}}{{host}}/images/user.jpg{{/if}}" class="img-t1">
+                    </div>
+                    <div class="card-description">
+                        <h3 class="card-title">{{this.title}}</h3>
+                        <p>{{this.description}}</p>
+                        <div class="product-price">${{this.price}}</div> 
+                    </div>
+                </a>
+            {{/each}}
+        </div>
+    </section>
+    
 </main>

@@ -1,0 +1,44 @@
+<header>
+    <a class="logo" href="{{host}}/">
+        <span>Domi<span class="gray">Fast</span></span>
+    </a>
+    <nav>
+        <ul>
+            <li><a href="{{host}}/pedidos">Pedidos</a></li>
+            <li><a href="{{host}}/productos">Productos</a></li>
+            <li><a href="{{host}}/empleo">Empleo</a></li>
+            <li><a class="red" href="{{host}}/logout">Cerrar sesion</a></li>
+        </ul>
+    </nav>
+</header>
+<section class="productos-section">
+    <form action="{{host}}/producto/{{product.id}}" method="POST" class="form-producto" enctype="multipart/form-data">
+        
+        <h2>Agrega tu producto</h2>
+        <div>
+            <label class="select-image product">
+                {{#if product}}
+                    <img class="image" src={{product.image}} alt={{product.title}}>
+                {{/if}}
+                <input type="file" name="image" class="none" required="true">
+            </label>
+            <div class="sub-form">    
+                {{>input type="text" name="title" placeholder="Nombre del producto" value=product.title}}
+                {{>input type="text" name="categorie" placeholder="Categoria"value=product.categorie}}
+                {{>input textarea="true" name="description" placeholder="Descripción"value=product.description}}
+                {{>input type="text" name="price" placeholder="Precio"value=product.price}}
+                
+                {{#if product}}
+                    <div class="update-and-delete">
+                        <a class="delete" id="delete">Eliminar</a>
+                        <button class="update">Actualizar</button>
+                    </div>
+                {{else}}
+                    <input type="submit" class="button" value="Agregar">
+                {{/if}}
+                
+            </div>
+        </div>
+    </form>
+
+</section>
