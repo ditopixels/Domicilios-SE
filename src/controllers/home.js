@@ -1,7 +1,9 @@
 import Products from '../models/Products.js'
+import Admin from '../models/Admin.js'
 
 export const renderHome = async(req, res) => {
     try {
+
         const productCategories = []
 
         const data = {
