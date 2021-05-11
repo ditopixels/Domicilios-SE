@@ -7,7 +7,7 @@ exports["default"] = void 0;
 var d = document;
 
 var _default = function _default() {
-  var $inputs = d.querySelectorAll('[inputAnimated] input');
+  var $inputs = d.querySelectorAll('[inputAnimated] input,[inputAnimated] textarea');
   $inputs.forEach(function (input) {
     var inputParent = input.parentElement;
     if (!input.value.trim() == 0) inputParent.classList.add('focus');

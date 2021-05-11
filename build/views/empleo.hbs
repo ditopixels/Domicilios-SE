@@ -1,0 +1,42 @@
+<header>
+    <a class="logo" href="{{host}}/">
+        <span>Eduardo_<span class="gray">Admin</span></span>
+    </a>
+    <nav>
+        <ul>
+            <li><a href="/">Regresar</a></li>
+        </ul>
+    </nav>
+</header>
+
+
+<form class="form-registro" action="/empleo" method="POST" enctype="multipart/form-data">
+
+	<h2 >Complete el Formulario</h2>
+
+	<div class="inputs">
+		{{>input type="text" name="username" placeholder="Nombre y apellido"}}
+		{{>input type="number" name="cedula" placeholder="Cédula"}}
+		{{>input type="number" name="edad" placeholder="Edad"}}
+		{{>input type="number" name="phone" placeholder="Teléfono"}}
+		{{>input type="email" name="email" placeholder="Correo electrónico"}}
+		<select class="selector">
+			<option>Medio de Transporte</option>
+			<option>Moto</option>
+			<option>Coche</option>
+			<option>Bicicleta</option>
+		</select>
+
+		<div class="div-add-photo">
+		
+		<label class="select-image">
+			<input type="file" name="image" class="none" required="true">
+		</label>
+
+		</div>
+
+	</div>
+
+	<button class="button" type="submit">Enviar</button>
+
+</form> 

@@ -1,0 +1,19 @@
+{{>header}}
+<section class="buyProduct">
+    <div>
+        <img src="{{product.image}}" alt="{{product.title}}">
+    </div>
+    <form action="{{host}}/pedidos/{{product.id}}" method="POST" class="form-pedido">
+            <h2>Realiza tu pedido</h2>
+            {{>input type="text" name="name" placeholder="Nombre"}}
+            {{>input type="text" name="email" placeholder="Correo electrónico"}}
+            {{>input type="text" name="phone" placeholder="Télefono"}}
+            {{>input type="number" name="edad" placeholder="Edad"}}
+            {{>input type="number" name="cantidad" placeholder="Cantidad"}}
+            {{>input type="text" name="output" placeholder="Direccion de entrega"}}
+            <input name="producto" type="hidden" value={{product.title}}>
+            <input type="hidden" name="image" value="{{product.image}}">
+            <button class="button">Realizar pedido</button>
+    </form>
+
+</section>

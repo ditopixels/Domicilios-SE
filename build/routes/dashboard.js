@@ -15,5 +15,9 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "d
 
 var router = (0, _express.Router)();
 router.get('/dashboard', _auth.isAuthenticated, _controllers["default"].renderDashboard);
+router.get('/logout', function (req, res) {
+  req.logOut();
+  res.redirect('/login');
+});
 var _default = router;
 exports["default"] = _default;

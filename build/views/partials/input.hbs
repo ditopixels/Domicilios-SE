@@ -1,0 +1,11 @@
+<label inputAnimated>
+    {{#if textarea }}
+        <textarea name={{name}} autocomplete="off">{{value}}</textarea>
+    {{else}}
+        <input type={{type}} name={{name}} autocomplete="off" value="{{value}}"> 
+    {{/if}}
+    <span class="placeholder">{{placeholder}}</span>
+    {{#ifEquals type "password"}}
+        <span class="fas fa-eye eye"></span>
+    {{/ifEquals}}
+</label>

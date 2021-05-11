@@ -21,18 +21,31 @@ var reqSchema = new _mongoose.Schema({
     required: true
   },
   entry: {
-    type: String,
-    required: true
+    type: String
+  },
+  cantidad: {
+    type: Number
   },
   output: {
     type: String,
     required: true
   },
   status: {
-    type: String,
+    type: Boolean,
     required: true
   },
-  img: {
+  date: {
+    type: Date,
+    "default": Date.now
+  },
+  type: {
+    type: String,
+    "enum": ["pedido", "product"]
+  },
+  image: {
+    type: String
+  },
+  producto: {
     type: String
   }
 });

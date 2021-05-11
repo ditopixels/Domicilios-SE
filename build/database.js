@@ -6,7 +6,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "d
 
 _mongoose["default"].connect('mongodb://localhost/domicilios', {
   useUnifiedTopology: true,
-  useNewUrlParser: true
+  useNewUrlParser: true,
+  useFindAndModify: false
 }).then(function (db) {
   return console.log("Database listening");
 })["catch"](function (err) {

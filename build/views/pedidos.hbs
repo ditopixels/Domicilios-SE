@@ -1,0 +1,34 @@
+<header>
+    <a class="logo" href="{{host}}/">
+        <span>Juan_<span class="gray">Diego</span></span>
+    </a>
+    <nav>
+        <ul>
+            <li><a href="{{host}}/pedidos">Pedidos</a></li>
+            <li><a href="{{host}}/productos">Productos</a></li>
+            <li><a href="{{host}}/empleo">Empleo</a></li>
+            <li><a class="red" href="{{host}}/logout">Cerrar sesion</a></li>
+        </ul>
+    </nav>
+</header>
+
+<div class="pedidos-container">
+    {{#each pedidos}}
+    <div class="pedido-card {{#if this.status}}ok{{/if}}">
+        <img src={{#if this.image}} {{this.image}} {{else}} "{{host}}images/user.jpg" {{/if}} alt="User pedidos">
+        <div class="pedido-container">
+            <span>Nombre: <span>{{this.name}}</span></span>
+            <span>Producto: <span>{{this.producto}}</span></span>
+            <span>Teléfono: <span>{{this.phone}}</span></span>
+            <span>Correo: <span>{{this.email}}</span></span>
+            {{#if this.entry}}
+                <span>Punto A: <span>{{this.entry}}</span></span>
+            {{/if}}
+            <span>Punto B: <span>{{this.output}}</span></span>
+            <span>Fecha: <span>{{timeago this.date}}</span></span>
+            <a href="{{host}}/pedidos/{{this._id}}" class="button pedido-add "><i class="fas fa-check"></i></a>
+            
+        </div>
+    </div>
+    {{/each}}
+</div>
