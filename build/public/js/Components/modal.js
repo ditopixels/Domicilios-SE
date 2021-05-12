@@ -5,14 +5,4 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports["default"] = modal;
 
-function modal() {
-  var $modal = document.getElementById('modal');
-  var $btnModal = $modal.querySelector('span.x');
-
-  if ($btnModal) {
-    $btnModal.addEventListener('click', function () {
-      console.log('click');
-      location.hash = '';
-    });
-  }
-}
+function modal() {}
