@@ -25,9 +25,11 @@
         <div>
             <label class="select-image product">
                 {{#if product}}
-                    <img class="image" src={{product.image}} alt={{product.title}}>
+                    <img id="imagenetq" class="image" src={{product.image}} alt={{product.title}}>
+                {{else}}
+                    <img id='imagenetq' class="image slow" src="{{host}}/images/camera.png">
                 {{/if}}
-                <input type="file" name="image" class="none" required="true">
+                <input id="imagen" type="file" name="image" class="none" required="true">
             </label>
             <div class="sub-form">    
                 {{>input type="text" name="title" placeholder="Nombre del producto" value=product.title}}

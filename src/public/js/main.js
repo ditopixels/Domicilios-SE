@@ -82,5 +82,23 @@ d.addEventListener('DOMContentLoaded', () => {
             location.href = '/'
         })
     }
+    // El listener va asignado al input
+    const $file = d.getElementById('imagen')
 
+    if ($file) {
+        $file.addEventListener('change', () => {
+            if ($file.files && $file.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    // Asignamos el atributo src a la tag de imagen
+
+                    const imagen = d.getElementById('imagenetq')
+
+                    imagen.src = e.target.result
+                    imagen.classList.remove('slow')
+                }
+                reader.readAsDataURL($file.files[0]);
+            }
+        })
+    }
 })
