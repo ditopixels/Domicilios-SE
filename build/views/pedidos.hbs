@@ -1,14 +1,21 @@
+
 <header>
-    <a class="logo" href="{{host}}/">
-        <span>Juan_<span class="gray">Diego</span></span>
-    </a>
+    <div class="logo">
+        <img src="{{host}}/images/icon.png" alt="">
+        <img src="{{host}}/images/name.png" alt="">
+    </div>
     <nav>
-        <ul>
-            <li><a href="{{host}}/pedidos">Pedidos</a></li>
-            <li><a href="{{host}}/productos">Productos</a></li>
-            <li><a href="{{host}}/empleo">Empleo</a></li>
-            <li><a class="red" href="{{host}}/logout">Cerrar sesion</a></li>
-        </ul>
+        <div class="icono-menu" id="icono-menu">
+            <img src="{{host}}/images/open-menu.png" >
+        </div>
+        <div class="cont-menu" id="menu">
+            <ul>
+                <li><a href="{{host}}/pedidos">Pedidos</a></li>
+                <li><a href="{{host}}/productos">Productos</a></li>
+                <li><a href="{{host}}/empleo">Empleo</a></li>
+                <li><a class="red" href="{{host}}/logout">Cerrar sesion</a></li>
+            </ul>
+        </div>
     </nav>
 </header>
 
@@ -26,7 +33,7 @@
             {{/if}}
             <span>Punto B: <span>{{this.output}}</span></span>
             <span>Fecha: <span>{{timeago this.date}}</span></span>
-            <a href="{{host}}/pedidos/{{this._id}}" class="button pedido-add "><i class="fas fa-check"></i></a>
+            <a data-fetch="{{host}}/pedidos/{{this._id}}" class="button pedido-add "><i class="fas fa-check"></i></a>
             
         </div>
     </div>
