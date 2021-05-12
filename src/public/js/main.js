@@ -43,7 +43,7 @@ d.addEventListener('DOMContentLoaded', () => {
     $btnDone.forEach(btn => {
         btn.addEventListener('click', async(e) => {
             e.preventDefault()
-            const url = btn.href
+            const url = btn.dataset.fetch
             const res = await fetch(url, { method: "PUT" })
             const json = await res.json()
 
@@ -68,6 +68,19 @@ d.addEventListener('DOMContentLoaded', () => {
             })
             location.href = "/dashboard"
         }
+    }
+
+    const $menu = d.getElementById('icono-menu')
+    const $nav = d.getElementById('menu')
+    $menu.addEventListener('click', () => {
+        $nav.classList.toggle('active')
+    })
+
+    const $logo = d.querySelector('.logo')
+    if ($logo) {
+        $logo.addEventListener('click', () => {
+            location.href = '/'
+        })
     }
 
 })

@@ -9,6 +9,5 @@ export const renderLogin = (req, res) => {
 
 export const validateAdmin = passport.authenticate('local', {
     successRedirect: '/dashboard',
-    failureRedirect: '/login',
-    failureFlash: true
+    failureRedirect: '/login'
 })

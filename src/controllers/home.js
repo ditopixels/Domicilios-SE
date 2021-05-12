@@ -32,7 +32,6 @@ export const renderHome = async(req, res) => {
 
         })
         data.msg = 'Pedido realizado, pronto nos estaremos comunicando contigo'
-        console.log(data)
         res.render('home', data)
     } catch (e) {
         console.log('error: ', e)

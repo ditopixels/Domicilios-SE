@@ -26,7 +26,7 @@
             {{/if}}
             <span>Punto B: <span>{{this.output}}</span></span>
             <span>Fecha: <span>{{timeago this.date}}</span></span>
-            <a href="{{host}}/pedidos/{{this._id}}" class="button pedido-add "><i class="fas fa-check"></i></a>
+            <a data-fetch="{{host}}/pedidos/{{this._id}}" class="button pedido-add "><i class="fas fa-check"></i></a>
             
         </div>
     </div>
