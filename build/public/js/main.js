@@ -49,7 +49,7 @@ d.addEventListener('DOMContentLoaded', function () {
             switch (_context.prev = _context.next) {
               case 0:
                 e.preventDefault();
-                url = btn.href;
+                url = btn.dataset.fetch;
                 _context.next = 4;
                 return fetch(url, {
                   method: "PUT"
@@ -112,5 +112,38 @@ d.addEventListener('DOMContentLoaded', function () {
         }
       }, _callee2);
     }));
+  }
+
+  var $menu = d.getElementById('icono-menu');
+  var $nav = d.getElementById('menu');
+  $menu.addEventListener('click', function () {
+    $nav.classList.toggle('active');
+  });
+  var $logo = d.querySelector('.logo');
+
+  if ($logo) {
+    $logo.addEventListener('click', function () {
+      location.href = '/';
+    });
+  } // El listener va asignado al input
+
+
+  var $file = d.getElementById('imagen');
+
+  if ($file) {
+    $file.addEventListener('change', function () {
+      if ($file.files && $file.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+          // Asignamos el atributo src a la tag de imagen
+          var imagen = d.getElementById('imagenetq');
+          imagen.src = e.target.result;
+          imagen.classList.remove('slow');
+        };
+
+        reader.readAsDataURL($file.files[0]);
+      }
+    });
   }
 });

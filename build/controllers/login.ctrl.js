@@ -21,8 +21,7 @@ exports.renderLogin = renderLogin;
 
 var validateAdmin = _passport["default"].authenticate('local', {
   successRedirect: '/dashboard',
-  failureRedirect: '/login',
-  failureFlash: true
+  failureRedirect: '/login'
 });
 
 exports.validateAdmin = validateAdmin;

@@ -65,22 +65,21 @@ var renderHome = /*#__PURE__*/function () {
               });
             });
             data.msg = 'Pedido realizado, pronto nos estaremos comunicando contigo';
-            console.log(data);
             res.render('home', data);
-            _context.next = 15;
+            _context.next = 14;
             break;
 
-          case 12:
-            _context.prev = 12;
+          case 11:
+            _context.prev = 11;
             _context.t0 = _context["catch"](0);
             console.log('error: ', _context.t0);
 
-          case 15:
+          case 14:
           case "end":
             return _context.stop();
         }
       }
-    }, _callee, null, [[0, 12]]);
+    }, _callee, null, [[0, 11]]);
   }));
 
   return function renderHome(_x, _x2) {
