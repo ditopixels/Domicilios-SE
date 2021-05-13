@@ -4,7 +4,7 @@
     "description": "",
     "main": "index.js",
     "scripts": {
-        "start": "node src/index",
+        "start": "node build/index",
         "dev": "nodemon src/index --exec babel-node",
         "build": "babel src -d build"
     },
