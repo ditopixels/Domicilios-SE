@@ -29,24 +29,26 @@ export const createEmpleo = async(req, res) => {
     }
 }
 
-export const renderRequest = async(req, res) => {
+export const renderRequest = (req, res) => {
     const data = {}
-    const empleo = await Empleo.findById(req.params.id)
-    if (empleo._id) {
-        data.empleo = {
-            _id: empleo._id,
-            username: empleo.username,
-            cedula: empleo.cedula,
-            edad: empleo.edad,
-            email: empleo.email,
-            phone: empleo.phone,
-            transport: empleo.transport,
-            image: empleo.image,
-            date: empleo.date
+    Empleo.findById(req.params.id, (err, user) => {
+        console.log(err, empleo)
+        if (empleo) {
+            data.empleo = {
+                _id: empleo._id,
+                username: empleo.username,
+                cedula: empleo.cedula,
+                edad: empleo.edad,
+                email: empleo.email,
+                phone: empleo.phone,
+                transport: empleo.transport,
+                image: empleo.image,
+                date: empleo.date
+            }
+            res.render('empleoreq', data)
+        } else {
+            res.render('404')
         }
+    })
 
-        res.render('empleoreq', data)
-    } else {
-        res.render('404')
-    }
 }
