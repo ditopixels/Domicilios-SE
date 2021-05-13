@@ -113,48 +113,31 @@ var createEmpleo = /*#__PURE__*/function () {
 
 exports.createEmpleo = createEmpleo;
 
-var renderRequest = /*#__PURE__*/function () {
-  var _ref3 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee3(req, res) {
-    var data, empleo;
-    return regeneratorRuntime.wrap(function _callee3$(_context3) {
-      while (1) {
-        switch (_context3.prev = _context3.next) {
-          case 0:
-            data = {};
-            _context3.next = 3;
-            return _Empleo["default"].findById(req.params.id);
+var renderRequest = function renderRequest(req, res) {
+  var data = {};
 
-          case 3:
-            empleo = _context3.sent;
+  _Empleo["default"].findById(req.params.id, function (err, empleo) {
+    console.log(err, empleo);
 
-            if (empleo._id) {
-              data.empleo = {
-                _id: empleo._id,
-                username: empleo.username,
-                cedula: empleo.cedula,
-                edad: empleo.edad,
-                email: empleo.email,
-                phone: empleo.phone,
-                transport: empleo.transport,
-                image: empleo.image,
-                date: empleo.date
-              };
-              res.render('empleoreq', data);
-            } else {
-              res.render('404');
-            }
-
-          case 5:
-          case "end":
-            return _context3.stop();
-        }
-      }
-    }, _callee3);
-  }));
-
-  return function renderRequest(_x5, _x6) {
-    return _ref3.apply(this, arguments);
-  };
-}();
+    if (empleo) {
+      data.empleo = {
+        _id: empleo._id,
+        username: empleo.username,
+        cedula: empleo.cedula,
+        edad: empleo.edad,
+        email: empleo.email,
+        phone: empleo.phone,
+        transport: empleo.transport,
+        image: empleo.image,
+        date: empleo.date
+      };
+      res.render('empleoreq', data);
+    } else {
+      res.render('404', {
+        path: req.url
+      });
+    }
+  });
+};
 
 exports.renderRequest = renderRequest;

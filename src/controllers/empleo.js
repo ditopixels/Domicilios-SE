@@ -31,7 +31,7 @@ export const createEmpleo = async(req, res) => {
 
 export const renderRequest = (req, res) => {
     const data = {}
-    Empleo.findById(req.params.id, (err, user) => {
+    Empleo.findById(req.params.id, (err, empleo) => {
         console.log(err, empleo)
         if (empleo) {
             data.empleo = {
@@ -47,7 +47,7 @@ export const renderRequest = (req, res) => {
             }
             res.render('empleoreq', data)
         } else {
-            res.render('404')
+            res.render('404', { path: req.url })
         }
     })
 

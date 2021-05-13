@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    scroll-behavior: smooth;
 }
 
 :root {
@@ -48,10 +49,11 @@ a:hover {
 
 .login {
     width: 100%;
-    max-width: 350px;
+    max-width: 400px;
     display: flex;
     flex-direction: column;
     margin-bottom: 4rem;
+    padding: 2rem;
 }
 
 .sign-img {
@@ -135,7 +137,7 @@ a:hover {
 
 .hero {
     width: 100%;
-    height: calc(100vh - 65px);
+    min-height: calc(100vh - 65px);
     background-image: url('/images/hero.jpg');
     background-repeat: no-repeat;
     background-size: cover;
@@ -145,7 +147,7 @@ a:hover {
 
 .hero-content {
     background-color: rgba(0, 0, 0, .65);
-    height: 100%;
+    height: calc(100vh - 65px);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -405,7 +407,8 @@ textarea {
 }
 
 .form-registro {
-    width: 400px;
+    width: 100%;
+    max-width: 400px;
     background: #fff;
     padding: 30px;
     margin: 2rem auto;
@@ -886,6 +889,44 @@ header {
     padding: .25rem 1rem;
 }
 
+.empleoreq {
+    display: flex;
+    width: 100%;
+    min-height: 100vh;
+    align-items: center;
+    padding: 2rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.empleoreq img {
+    width: 300px;
+    height: 300px;
+    border-radius: 4px;
+    object-fit: cover;
+}
+
+.empleoreq-container>span {
+    color: var(--second-color);
+    margin-bottom: 1rem;
+}
+
+.empleoreq-container>span>span {
+    color: var(--second-color);
+    font-weight: bold;
+}
+
+.empleoreq-container {
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    border-radius: 4px;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, .25);
+    padding: 2rem;
+    width: 300px;
+    margin: 1rem;
+}
+
 @media screen and (max-width:768px) {
     .icono-menu {
         display: block;
@@ -915,5 +956,12 @@ header {
     .cont-menu>ul>li {
         text-align: center;
         padding: 1rem 2rem;
+    }
+    .pedidos-section img,
+    .sign-img {
+        display: none;
+    }
+    .pedidos-section form {
+        width: 100%;
     }
 }
