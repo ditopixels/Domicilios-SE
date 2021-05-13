@@ -41,13 +41,14 @@ d.addEventListener('DOMContentLoaded', () => {
 
     const $btnDone = d.querySelectorAll('.pedido-add')
     $btnDone.forEach(btn => {
-        btn.addEventListener('click', async(e) => {
+        btn.addEventListener('click', (e) => {
             e.preventDefault()
             const url = btn.dataset.fetch
-            const res = await fetch(url, { method: "PUT" })
-            const json = await res.json()
 
-            location.reload()
+            fetch(url, { method: 'PUT' })
+                .then(res => res.json)
+                .then(json => location.reload())
+                .catch(e => console.log(e))
         })
     })
 
@@ -62,11 +63,11 @@ d.addEventListener('DOMContentLoaded', () => {
 
     const $delete = document.getElementById('delete')
     if ($delete) {
-        $delete.onclick = async() => {
-            const res = await fetch(location.href, {
+        $delete.onclick = () => {
+            fetch(location.href, {
                 method: 'DELETE'
-            })
-            location.href = "/dashboard"
+            }).then(res => location.href = "/dashboard")
+
         }
     }
 
