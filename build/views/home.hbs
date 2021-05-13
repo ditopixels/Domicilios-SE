@@ -1,5 +1,5 @@
 {{>header}}
-<section class="pedidos-section">
+<section class="pedidos-section" id="pedidos">
     <form action="{{host}}/pedidos" method="POST" class="form-pedido">
         <h2>Realiza tu pedido</h2>
         {{>input type="text" name="name" placeholder="Nombre"}}
@@ -17,7 +17,7 @@
 
 </section>
 
-<section class="products bg-white">
+<section class="products bg-white" id="productos">
     <h2>Productos</h2>
     {{#each categories}}
         <div class="categorie">
@@ -42,7 +42,7 @@
         </div>
     {{/each}}
 </section>
- <div class="hero hero-home" style="background-position:center top;background-image: url({{host}}/images/heroQuien.jpg);">
+ <div class="hero hero-home"id="empleo" style="background-position:center top;background-image: url({{host}}/images/heroQuien.jpg);">
     <div class="hero-content">
         <h2>¿Como funciona  <span style="color: gold">Domi</span><span style="color: orange">Fast</span> ? </h2>
         <p class="hero-text">
