@@ -12,6 +12,7 @@ import login from './routes/login.js'
 import dashboard from './routes/dashboard.js'
 import pedidos from './routes/pedidos.js'
 
+
 import config from './config.js'
 
 import './helpers/admin.js'
@@ -62,6 +63,7 @@ app.use(home)
 app.use(pedidos)
 app.use(login)
 app.use(dashboard)
+
 
 app.use(express.static(path.join(__dirname, 'public')))
 

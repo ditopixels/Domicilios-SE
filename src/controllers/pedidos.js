@@ -4,9 +4,9 @@ import cloudinary from 'cloudinary'
 import fs from 'fs'
 
 cloudinary.config({
-    cloud_name: 'dzycauqfy',
-    api_key: '155476782716687',
-    api_secret: 'pCdHlKC4osyCoWdUQcdMAl2QRx0'
+    cloud_name: 'domicilios-santa-elena',
+    api_key: '394946996974333',
+    api_secret: 'IsiSpKih9kakRkm89BSm6nY5Djs'
 })
 
 export const createPedido = async(req, res) => {
@@ -46,7 +46,7 @@ export const createProduct = async(req, res) => {
         const newProduct = new Products({ title, description, categorie, price, image: image.url, imageId: image.public_id })
         await newProduct.save()
         fs.unlink(req.file.path, () => {
-            res.redirect('/producto/add', { msg: 'Producto creado exitosamente' })
+            res.redirect('/producto/add#modal')
         })
     } catch (e) {
         console.log(e)
