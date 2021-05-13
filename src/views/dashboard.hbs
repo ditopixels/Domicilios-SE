@@ -67,17 +67,12 @@
                         <img class="pedido-img" src={{#if this.image}} {{this.image}} {{else}} "{{host}}images/user.jpg" {{/if}} alt="usuario">
                         <span>{{this.username}}</span>
                         <span>{{timeago this.date}}</span>
-                        <span class="line-blue">{{this.phone}}</span>
-                        <!--
-                        <a class="link-gray" href="{{host}}/pedidos/{{this._id}}">Ver pedido</a>-->
+                        <a class="link-gray" href="{{host}}/empleo/{{this._id}}">Ver</a>
                     
                 {{/each}}
             {{else}}
                 <p>No tiene solicitudes de empleo</p>
             {{/if}}
-        </div>
-        <div class="pedidos-footer">
-            <a href="{{host}}/pedidos" class="button-ghost blue">Ver todas las solicitudes</a>
         </div>
     </div>
 

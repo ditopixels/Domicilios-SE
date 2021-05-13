@@ -1,7 +1,7 @@
 import { renderLogin, validateAdmin } from './login.ctrl.js'
 import { renderDashboard } from './dashboard.ctrl.js'
 import { renderCategorie, deleteProduct, updateProduct, createProduct, renderProduct, createPedido, renderPedido, renderPedidos, updateStatus } from './pedidos.js'
-import { createEmpleo, renderEmpleo } from './empleo.js'
+import { renderRequest, createEmpleo, renderEmpleo } from './empleo.js'
 import { renderHome } from './home.js'
 
 export default {
@@ -20,5 +20,6 @@ export default {
     updateProduct,
     deleteProduct,
     renderCategorie,
-    createEmpleo
+    createEmpleo,
+    renderRequest
 }

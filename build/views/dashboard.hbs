@@ -28,6 +28,7 @@
             </p>
         </div>
     </div>
+    
     <div class="pedidos">
         <div class="pedidos-header">
             <h3>Pedidos</h3>
@@ -51,6 +52,27 @@
         </div>
         <div class="pedidos-footer">
             <a href="{{host}}/pedidos" class="button-ghost">Ver todos los pedidos</a>
+        </div>
+    </div>
+
+    <div class="pedidos">
+        <div class="pedidos-header blue">
+            <h3>Solicitudes empleo</h3>
+        </div>
+        <div class="pedidos-content">
+            {{#if empleos}}
+                {{#each empleos}}
+                    
+                        
+                        <img class="pedido-img" src={{#if this.image}} {{this.image}} {{else}} "{{host}}images/user.jpg" {{/if}} alt="usuario">
+                        <span>{{this.username}}</span>
+                        <span>{{timeago this.date}}</span>
+                        <a class="link-gray" href="{{host}}/empleo/{{this._id}}">Ver</a>
+                    
+                {{/each}}
+            {{else}}
+                <p>No tiene solicitudes de empleo</p>
+            {{/if}}
         </div>
     </div>
 

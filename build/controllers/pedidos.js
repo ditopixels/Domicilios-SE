@@ -20,9 +20,9 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
 _cloudinary["default"].config({
-  cloud_name: 'dzycauqfy',
-  api_key: '155476782716687',
-  api_secret: 'pCdHlKC4osyCoWdUQcdMAl2QRx0'
+  cloud_name: 'domicilios-santa-elena',
+  api_key: '394946996974333',
+  api_secret: 'IsiSpKih9kakRkm89BSm6nY5Djs'
 });
 
 var createPedido = /*#__PURE__*/function () {
@@ -127,9 +127,7 @@ var createProduct = /*#__PURE__*/function () {
 
           case 8:
             _fs["default"].unlink(req.file.path, function () {
-              res.redirect('/producto/add', {
-                msg: 'Producto creado exitosamente'
-              });
+              res.redirect('/producto/add#modal');
             });
 
             _context2.next = 14;

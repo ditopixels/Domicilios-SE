@@ -9,6 +9,8 @@ var _Pedidos = _interopRequireDefault(require("../models/Pedidos.js"));
 
 var _Products = _interopRequireDefault(require("../models/Products.js"));
 
+var _Empleo = _interopRequireDefault(require("../models/Empleo.js"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -17,7 +19,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 var renderDashboard = /*#__PURE__*/function () {
   var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(req, res) {
-    var data, pedidosDB, productsDB, pedidos, products;
+    var data, pedidosDB, productsDB, empleosDB, pedidos, products, empleos;
     return regeneratorRuntime.wrap(function _callee$(_context) {
       while (1) {
         switch (_context.prev = _context.next) {
@@ -40,11 +42,29 @@ var renderDashboard = /*#__PURE__*/function () {
 
           case 7:
             productsDB = _context.sent;
+            _context.next = 10;
+            return _Empleo["default"].find().sort({
+              date: -1
+            });
+
+          case 10:
+            empleosDB = _context.sent;
             pedidos = [];
             products = [];
+            empleos = [];
             data.title = 'Dashboard';
             data.name = req.user.username;
             console.log('Productos ', pedidosDB);
+            empleosDB.forEach(function (empleo) {
+              return empleos.push({
+                _id: empleo._id,
+                username: empleo.username,
+                phone: empleo.phone,
+                image: empleo.image,
+                date: empleo.date
+              });
+            });
+            data.empleos = empleos;
             pedidosDB.forEach(function (pedido) {
               return pedidos.push({
                 _id: pedido._id,
@@ -66,20 +86,20 @@ var renderDashboard = /*#__PURE__*/function () {
             });
             data.products = products;
             res.render('dashboard', data);
-            _context.next = 23;
+            _context.next = 29;
             break;
 
-          case 20:
-            _context.prev = 20;
+          case 26:
+            _context.prev = 26;
             _context.t0 = _context["catch"](0);
             console.log(_context.t0);
 
-          case 23:
+          case 29:
           case "end":
             return _context.stop();
         }
       }
-    }, _callee, null, [[0, 20]]);
+    }, _callee, null, [[0, 26]]);
   }));
 
   return function renderDashboard(_x, _x2) {
