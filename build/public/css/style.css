@@ -50,14 +50,18 @@ a:hover {
 .login {
     width: 100%;
     max-width: 400px;
+    min-width: 300px;
     display: flex;
     flex-direction: column;
     margin-bottom: 4rem;
     padding: 2rem;
+    flex-wrap: wrap;
 }
 
 .sign-img {
     width: 28%;
+    max-width: 350px;
+    min-width: 250px;
 }
 
 .container {
@@ -65,6 +69,7 @@ a:hover {
     display: flex;
     align-items: center;
     justify-content: space-around;
+    flex-wrap: wrap;
 }
 
 .login h2 {
@@ -649,8 +654,8 @@ textarea {
 }
 
 .product-add {
-    width: 300px;
-    height: 200px;
+    width: 200px;
+    height: 300px;
     color: var(--second-color);
     border: 2px dashed var(--second-color);
     display: flex;
