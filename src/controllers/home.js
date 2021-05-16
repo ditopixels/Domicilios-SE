@@ -27,9 +27,9 @@ export const renderHome = async(req, res) => {
                     }]
                 })
             }
-            data.categories[productCategories.indexOf(categorie)].products.push({ title, description, image, price, _id })
-
-
+            if (data.categories[productCategories.indexOf(categorie)].products.length < 6) {
+                data.categories[productCategories.indexOf(categorie)].products.push({ title, description, image, price, _id })
+            }
         })
         data.msg = 'Pedido realizado, pronto nos estaremos comunicando contigo'
         res.render('home', data)

@@ -56,13 +56,15 @@ var renderHome = /*#__PURE__*/function () {
                 });
               }
 
-              data.categories[productCategories.indexOf(categorie)].products.push({
-                title: title,
-                description: description,
-                image: image,
-                price: price,
-                _id: _id
-              });
+              if (data.categories[productCategories.indexOf(categorie)].products.length < 6) {
+                data.categories[productCategories.indexOf(categorie)].products.push({
+                  title: title,
+                  description: description,
+                  image: image,
+                  price: price,
+                  _id: _id
+                });
+              }
             });
             data.msg = 'Pedido realizado, pronto nos estaremos comunicando contigo';
             res.render('home', data);
